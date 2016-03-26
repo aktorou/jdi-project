@@ -1,0 +1,54 @@
+@mixin coverer 
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+@mixin centerer 
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@mixin word-wrap() 
+  word-break:     break-word
+  -webkit-hyphens: auto
+  -moz-hyphens:    auto
+  hyphens:         auto
+
+
+@mixin ellipsis() 
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+
+@function black($opacity) 
+  @return rgba(black, $opacity)
+
+@function white($opacity) 
+  @return rgba(white, $opacity)
+
+
+
+@function calculator($num-one, $symbol, $num-two)
+  @if $symbol == '*'
+    @return $num-one * $num-two
+  @if $symbol == '-'
+    @return $num-one - $num-two
+  @if $symbol == '+'
+    @return $num-one + $num-two
+  @if $symbol == '/'
+    @return $num-one / $num-two
+
+
+@mixin ResponsiveText ($MaxResolution,$DesktopSize,$MobileSize)
+  $DesktopMediaSize: ($MaxResolution*1px)
+  $MobileMediaSize: ((($MobileSize*16)/(($DesktopSize*16)/($MaxResolution/100)))*100px)
+  font-size: $DesktopSize * 1rem
+  @media only screen and (max-width: $DesktopMediaSize) 
+    font-size: (($DesktopSize * 16)/($MaxResolution/100))*1vw
+  
+  @media only screen and (max-width: $MobileMediaSize)
+    font-size: $MobileSize*1rem

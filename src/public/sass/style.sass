@@ -1,0 +1,444 @@
+@import 'font-awesome-4.5.0/font-awesome'
+@import 'includes/toolbox'
+
+$background-color: #f2f2f2
+
+$theme-color-one: #4e5050
+$theme-color-two: #848484
+$theme-color-three: #54595a
+
+$text-color-one: #fff
+$text-color-two: #bababa
+
+$header-height: 100px
+
+$max-width: 1500px
+$page-padding: 60px
+
+$nav-width: 300px
+
+
+body
+  background-color: $background-color
+  overflow: hidden
+
+h1
+  font-weight: 200
+  font-size: 3.8em
+  letter-spacing: 3px
+  margin-bottom: 30px
+  @include ResponsiveText(1100,3.8,2.3)
+h2
+  color: $text-color-two
+  font-size: 2em
+  @include ResponsiveText(1100,2,1.5)
+p
+  font-size: 1em
+  color: grey
+a
+  color: #08c1ad
+
+button
+  &:focus
+    outline: 0
+
+header, nav
+  background-color: $theme-color-one
+
+header
+  width: calc(100% - #{$nav-width})
+  height: $header-height
+  position: absolute
+  top: 0
+  right: 0
+  .logo
+    float: right
+    height: $header-height
+    padding: 30px 0
+    margin-right: $page-padding
+  .max
+    max-width: $max-width
+    width: 100%
+    margin: auto
+  .toggle-nav
+    display: none
+    cursor: pointer
+    &:hover
+      background-color: #696969
+
+nav
+  width: $nav-width
+  height: 100%
+  position: absolute
+  left: 0
+  top: 0
+  z-index: 1
+  .account-status
+    height: $header-height
+    width: inherit
+    background-color: $theme-color-two
+    font-size: 0 // fix for whitespace padding
+    .icon
+      font-size: 40px
+      display: inline-block
+      height: $header-height
+      width: $header-height
+      padding: 10px
+      vertical-align: top
+      i
+        &:first-of-type
+          color: #bababa
+        &:last-of-type
+          color: $theme-color-two
+          font-size: 1.3em
+    .holder
+      display: inline-block
+      width: calc(100% - #{$header-height})
+      height: 100%
+      position: relative
+      .name, .status
+        color: $text-color-one
+        position: absolute
+        height: calc(#{$header-height} / 2)
+        left: 0
+      .name
+        top: 0
+        font-size: 25px
+        font-weight: 300
+        vertical-align: bottom
+        line-height: 70px
+      .status
+        bottom: 0
+        font-size: 18px
+        vertical-align: top
+  ul
+    list-style: none
+    margin: 0
+    li
+      span
+        padding: 11px 5px 11px 25px
+        font-weight: 500
+        display: block
+        color: $text-color-two
+        text-transform: capitalize
+        border-left: 0px solid #D2CE0A
+        transition: all 0.3s ease
+        &:hover
+          color: $text-color-one
+          background-color: $theme-color-three   
+          border-left: 3px solid #D2CE0A
+  >ul
+    >li
+      >span
+        font-size: 18px
+      i
+        margin-right: 7px
+      &.heading
+        margin-top: 30px
+        text-transform: uppercase
+        letter-spacing: 4px
+        color: $text-color-one
+        font-weight: 700
+        padding: 8px 8px 8px 25px
+      &.active
+        >span
+          color: $text-color-one
+          background-color: $theme-color-three
+          border-left: 3px solid red
+  .dropdown
+    li
+      >span
+        padding-left: 55px
+        font-size: 16px
+  .search
+    $search-height: 55px
+
+    margin: 0 25px
+    position: relative
+    overflow: hidden
+    input, i
+      transition: all 0.3s 0s ease-in-out
+    input
+      background-color: $theme-color-three
+      border: none
+      padding: 10px 10px 10px 55px
+      height: $search-height
+      font-size: 1.15em
+      margin-top: 20px
+      z-index: 1
+      width: 100%
+      color: $text-color-one
+    i
+      z-index: 2
+      position: absolute
+      top: 20px
+      font-size: 1.2em
+      color: $text-color-two
+      opacity: 0.5
+      left: 20px
+      height: $search-height
+      line-height: $search-height
+    &:hover
+      input
+        font-size: 1.2em
+      i
+        opacity: 1
+        font-size: 1.4em
+    input
+      &:focus
+        outline: 0
+        background-color: $theme-color-three
+        padding-left: 10px
+        + i
+          opacity: 0
+          left: -50px
+
+main
+  width: calc(100% - #{$nav-width})
+  margin-left: $nav-width
+  margin-top: $header-height
+  position: relative
+  overflow: auto
+  height: calc(100vh - #{$header-height}) 
+  .page
+    width: 100%
+    max-width: $max-width
+    margin: auto
+    background-color: white
+    height: calc(100vh - #{$header-height})
+    padding: $page-padding
+    box-shadow: 1px 1px 1px 1px #E8E8E8
+    border-left: 1px solid #C5C5C5
+
+  .bread
+    list-style: none
+    margin: 0
+    margin-bottom: 20px
+    li
+      display: inline-block
+      text-transform: uppercase
+      color: $text-color-two
+      font-weight: 600
+      font-size: 1.2em
+      &:after
+        content: "/"
+        margin-left: 8px
+        margin-right: 3px
+        font-size: 1.3em
+        top: 2px
+        position: relative
+        font-weight: 500
+      &:last-of-type:after
+        content: ""
+
+  .car-holder
+    background-color: #fbfbfb
+    width: 100%
+    height: auto
+    position: absolute
+    left: 0
+    margin-top: 50px
+    box-shadow: 0px 0px 2px 0px #CCC
+    font-size: 0 // fix for whitespace padding
+    ul
+      list-style: none
+      width: 100%
+      max-width: $max-width
+      margin: auto
+      padding: 30px 50px
+      padding-top: 0
+      >li
+        background-color: white
+        display: inline-block
+        width: calc(94% / 3)
+        height: auto
+        margin: 0 1%
+        border-radius: 1px
+        border-bottom: 3px solid rgb(241, 241, 241)
+        overflow: hidden
+        margin-top: 30px
+        vertical-align: top
+        cursor: pointer
+      .info
+        padding: 25px
+        min-height: 150px
+        h3
+          font-size: 15px
+          text-transform: uppercase
+          color: $text-color-two
+          font-weight: 600
+          letter-spacing: 2px
+        p
+          font-size: 16px
+          margin: 0
+        hr
+          border: none
+          border-bottom: 1px solid #EFEFEF
+      .bg-img
+        width: 100%
+        height: 250px
+        overflow: hidden
+        div
+          background-repeat: no-repeat
+          background-position: center center
+          background-size: cover
+          transition: all 0.5s ease
+          transform: scale(1) rotate(0deg)
+          width: inherit
+          height: inherit
+          overflow: hidden
+    ul>li:hover
+      .bg-img>div
+        transform: scale(1.2) rotate(10deg)
+
+
+// Responsive code starts here
+
+@media screen and (max-width: $max-width)
+  main
+    .page
+      border: none
+      box-shadow: none
+
+@media screen and (max-width: 1000px)
+  main
+    .car-holder
+      ul
+        li
+          width: calc(92% / 2)
+          margin: 0 2%
+          margin-top: 30px
+
+@media screen and (max-width: 880px)
+  $header-height: 75px
+  
+  header, main
+    width: 100%
+    margin-left: 0
+  header
+    height: $header-height
+    .logo
+      height: $header-height
+      margin-right: 30px
+      padding: 23px 0
+    .toggle-nav
+      position: fixed
+      left: 30px
+      top: 18px
+      background-color: #828282
+      padding: 9px 14px
+      color: white
+      font-size: 1.4em
+      z-index: 2
+      display: block
+  main
+    margin-top: $header-height
+    .bread
+      li
+        font-size: 0.8em
+    .page
+      padding: 30px
+      h1, h2
+        font-weight: 200
+      h1
+        margin-bottom: 15px
+    .car-holder
+      margin-top: 40px
+
+  nav
+    margin-top: $header-height
+    width: 100%
+    max-width: 400px
+    height: auto
+    max-height: 0
+    transition: all 0.3s ease
+    overflow: auto
+    background-color: #404040
+    &.open
+      max-height: 650px
+    
+    .account-status
+      display: none
+    ul
+      list-style: none
+      margin: 0
+      .dark
+        background-color: #383838
+      li
+        span
+          padding: 11px 5px 15px 25px
+    >ul
+      $border-seperator: #636363
+
+      margin-top: 95px
+      border-top: 1px solid $border-seperator
+      >li
+        &.top-divider
+          border-top: 1px solid $border-seperator
+        &:last-of-type
+          margin-bottom: 30px
+        >span
+          font-size: 16px
+        i
+          margin-right: 7px
+        &.heading
+          display: none
+        &.half
+          width: 50%
+          display: inline-block
+        &.active
+          >span
+            color: $text-color-one
+            background-color: $theme-color-three
+            border-left: 3px solid red
+
+    .dropdown
+      height: auto
+      max-height: 0
+      overflow: hidden
+      transition: all 0.3s ease
+      background-color: #46494A
+      li
+        border-bottom: 1px solid #54595A
+        &:last-of-type
+          border-bottom: 0
+        >span
+          padding: 8px 5px 8px 55px
+          font-size: 15px
+          &:before
+            content: "-"
+            left: -10px
+            position: relative
+
+    >ul>li.active .dropdown
+      max-height: 500px
+    .search
+      position: absolute
+      top: 0
+      width: 100%
+      padding: 20px
+      box-sizing: border-box
+      margin: 0
+      input
+        margin: 0
+      i
+        left: 40px
+
+@media screen and (max-width: 600px)
+  main
+    .car-holder
+      ul
+        li
+          width: 100%
+          margin: 0
+          margin-top: 30px
+  nav
+    max-width: 100%
+    &.open
+      max-height: 493px // Height of iphone 5 screen
+
+
+
+
+
+
