@@ -1,6 +1,6 @@
 #jdi mini project
 
-Use psd designs to make s simple frontend design for displaying cars from a database.
+Use PSD's to make a simple frontend design, displaying cars from a database.
 
 
 ##Frameworks used
