@@ -6,7 +6,7 @@ var panini   = require('panini');
 var rimraf   = require('rimraf');
 var sequence = require('run-sequence');
 var sherpa   = require('style-sherpa');
-var clean = require('gulp-clean');
+var clean    = require('gulp-clean');
 
 // Check for --production flag
 var isProduction = !!(argv.production);
@@ -59,57 +59,26 @@ var PATHS = {
 
 // Delete the "dist" folder
 // This happens every time a build starts
-gulp.task('clean', function(done) {
-  // rimraf('dist/assets', done);
-  // rimraf('dist/views', done);
-  
+gulp.task('clean', function(done) {  
   return gulp.src(['dist'], {read: false})
     .pipe(clean());
-  // return gulp.src(['dist/app', 'dist/public/assets'], {read: false})
-  //   .pipe(clean());
 });
 
 // Copy files out of the assets folder
 // This task skips over the "img", "js", and "scss" folders, which are parsed separately
 gulp.task('copy', function() {
-  // gulp.src(PATHS.assets)
-  //   .pipe(gulp.dest('dist/assets'));
-
   gulp.src(['src/.htaccess'])
     .pipe(gulp.dest('dist'));
-
   gulp.src(['src/cache/**/*'])
     .pipe(gulp.dest('dist/cache'));
-
   gulp.src(['src/app/**/*'])
     .pipe(gulp.dest('dist/app'));
-
-  
   gulp.src(['src/public/*.php', 'src/public/.htaccess'])
     .pipe(gulp.dest('dist/public'));
-  
   gulp.src(['src/public/fonts/*'])
     .pipe(gulp.dest('dist/public/fonts'));
 });
 
-// Copy page templates into finished HTML files
-gulp.task('pages', function() {
-  gulp.src('src/pages/**/*.{phtml,hbs,handlebars}')
-    // .pipe(panini({
-    //   root: 'src/pages/',
-    //   layouts: 'src/layouts/',
-    //   partials: 'src/partials/',
-    //   data: 'src/data/',
-    //   helpers: 'src/helpers/'
-    // }))
-    .pipe(gulp.dest('./dist/app/views'));
-});
-
-gulp.task('pages:reset', function(cb) {
-  panini.refresh();
-  gulp.run('pages');
-  cb();
-});
 
 // gulp.task('styleguide', function(cb) {
 //   sherpa('src/styleguide/index.md', {
@@ -225,7 +194,6 @@ gulp.task('default', ['build', 'server'], function() {
     'src/app/views/*.{phtml,volt,php}'
     ],
     ['build', browser.reload]);
-  // gulp.watch(['src/{layouts,partials}/**/*.html'], ['pages:reset', browser.reload]);
   gulp.watch(['src/public/scss/**/*.scss'], ['pre-process', browser.reload]);
   gulp.watch(['src/public/sass/**/*.sass'], ['pre-process', browser.reload]);
   gulp.watch(['src/public/js/**/*.js'], ['javascript', browser.reload]);
