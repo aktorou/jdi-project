@@ -1,63 +1,13 @@
-# ZURB Template
+#jdi mini project
 
-**Please open all issues with this template on the main [Foundation for Sites](https://github.com/zurb/foundation-sites/issues) repo.**
+Use psd designs to make s simple frontend design for displaying cars from a database.
 
-This is the official ZURB Template for use with [Foundation for Sites](http://foundation.zurb.com/sites). We use this template at ZURB to deliver static code to our clients. It has a Gulp-powered build system with these features:
+Thought I'd install and try both zurb foundation and phalcon for this mini project. Installed phalcon to work on my pre-existing MAMP setup, which was fairly simple.
 
-- Handlebars HTML templates with Panini
-- Sass compilation and prefixing
-- JavaScript concatenation
-- Built-in BrowserSync server
-- For production builds:
-  - CSS compression
-  - JavaScript compression
-  - Image compression
+I mainly used foundation for handling script preprocessing like compiling the sass/scss files. I didn't use many of foundations built-in sass styles but had a good look through them so I have a clearer idea for future projects.
 
-## Installation
+I wasn't sure how much of the car system you wanted me to make, so I just pulled all items from the "Cars" table and displayed them on a single page. In terms of front end functionality, the navigation doesn't actually function as there is only the one page, but the site is responsive. As there wasn't much php in the project, and I wasn't getting any errors, I didn't use PHPUnit.
 
-To use this template, your computer needs:
+It took me about 3.5 hours to design the front end from the psd files. The rest (maybe 7 hours) was spent reading through phalcon and foundation's documentation for a better understanding.
 
-- [NodeJS](https://nodejs.org/en/) (0.10 or greater)
-- [Git](https://git-scm.com/)
-
-This template can be installed with the Foundation CLI, or downloaded and set up manually.
-
-### Using the CLI
-
-Install the Foundation CLI with this command:
-
-```bash
-npm install foundation-cli --global
-```
-
-Use this command to set up a blank Foundation for Sites project with this template:
-
-```bash
-foundation new --framework sites --template zurb
-```
-
-The CLI will prompt you to give your project a name. The template will be downloaded into a folder with this name.
-
-### Manual Setup
-
-To manually set up the template, first download it with Git:
-
-```bash
-git clone https://github.com/zurb/foundation-sites-template projectname
-```
-
-Then open the folder in your command line, and install the needed dependencies:
-
-```bash
-cd projectname
-npm install
-bower install
-```
-
-Finally, run `npm start` to run Gulp. Your finished site will be created in a folder called `dist`, viewable at this URL:
-
-```
-http://localhost:8000
-```
-
-To create compressed, production-ready assets, run `npm run build`.
+** Really like phalcon- seems very flexible and lightweight. Doesn't have a lot of the design clutter you get when making backend modules in silverstripe.
